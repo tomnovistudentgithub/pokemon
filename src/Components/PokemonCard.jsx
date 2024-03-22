@@ -27,21 +27,20 @@ function PokemonCard() {
                     const pokemonDetails = response.details;
                     setData(pokemonDetails);
                     setTotalPages(Math.ceil(response.count / 20));
-
-            setLoading(false);
                 }
             } catch (error) {
                 if (error.name === 'AbortError') {
                     console.log('Request aborted');
-                    setLoading(false);
                 } else {
-                    setLoading(false);
                     setError(error);
                     throw error;
-
                 }
             }
-        };
+            finally {
+                    setLoading(false);
+                }
+            };
+
 
         fetchData();
 
@@ -76,9 +75,11 @@ function PokemonCard() {
 
         <div>
             {error && <div className="error">{error.message}</div>}
+            <div className="button-container">
             <button className="button-card" onClick={handlePrevious} disabled={loading || currentPage === 1}>Previous</button>
             <button className="button-card" onClick={handleNext} disabled={loading || currentPage === totalPages}>Next</button>
-            <div className="pokemon-card-wrapper">
+            </div>
+                <div className="pokemon-card-wrapper">
 
                 {data && data.map((pokemon, index) => {
                     return <>
