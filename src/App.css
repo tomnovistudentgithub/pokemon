@@ -1,1 +1,13 @@
 /*Schrijf hier jouw eigen CSS!*/
+
+h1 {
+  color: #00eaff;
+    text-align: center;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #213547;
+
+}
