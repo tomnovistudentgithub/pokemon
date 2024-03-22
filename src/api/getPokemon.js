@@ -11,7 +11,7 @@ export async function getPokemon(signal, offset = 0) {
    const pokemonsWithDetails = await getAllPokemonDetails(urls);
 
     return {details: pokemonsWithDetails, count: data.count};
-}
+//}
 
 export async function getPokemonByUrl(url) {
     const response = await axios.get(url);

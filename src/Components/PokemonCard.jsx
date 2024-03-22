@@ -10,6 +10,7 @@ function PokemonCard() {
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [error, setError] = useState(null);
     let abrtController;
 
 
@@ -35,6 +36,7 @@ function PokemonCard() {
                     setLoading(false);
                 } else {
                     setLoading(false);
+                    setError(error);
                     throw error;
 
                 }
@@ -73,6 +75,7 @@ function PokemonCard() {
     return (
 
         <div>
+            {error && <div className="error">{error.message}</div>}
             <button className="button-card" onClick={handlePrevious} disabled={loading || currentPage === 1}>Previous</button>
             <button className="button-card" onClick={handleNext} disabled={loading || currentPage === totalPages}>Next</button>
             <div className="pokemon-card-wrapper">
